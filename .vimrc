@@ -1,19 +1,26 @@
-" my config
+" my confing
 set runtimepath^=~/vimfiles
+"set runtimepath^=~/vimfiles/colors
 
 syntax on
 set background=dark
+set autochdir
 
-set encoding=utf-8
-set fileencodings=utf-8,euc-jp,default,latin
+set number
+set cursorline
+hi clear CursorLine
 
-" ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å–ã‚‰ãªã„
+"set encoding=utf-8
+"set fileencodings=utf-8,latin1
+set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
+
+" ƒoƒbƒNƒAƒbƒvæ‚ç‚È‚¢
 set nobackup
-" ä»–ã§æ›¸ãæ›ãˆã‚‰ã‚ŒãŸã‚‰è‡ªå‹•ã§èª­ã¿ç›´ã™
+" ‘¼‚Å‘‚«Š·‚¦‚ç‚ê‚½‚ç©“®‚Å“Ç‚İ’¼‚·
 "set autoread
-" ã‚¹ãƒ¯ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ä½œã‚‰ãªã„
+" ƒXƒƒbƒvƒtƒ@ƒCƒ‹ì‚ç‚È‚¢
 set noswapfile
-" ä¿å­˜æ™‚ã«tabã‚’ã‚¹ãƒšãƒ¼ã‚¹ã«å¤‰æ›ã™ã‚‹
+" •Û‘¶‚Étab‚ğƒXƒy[ƒX‚É•ÏŠ·‚·‚é
 autocmd BufWritePre * :%s/\t/  /ge
 
 " status line
@@ -21,7 +28,8 @@ set laststatus=2
 set statusline=%<%f\ %m%r%h%w
 set statusline+=%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}
 set statusline+=%=%l/%L,%c%V%8P
-highlight statusline   term=NONE cterm=NONE guifg=red ctermfg=yellow ctermbg=red
+"highlight statusline   term=NONE cterm=NONE guifg=green ctermfg=black ctermbg=green
+"highlight StatusLine term=bold cterm=bold ctermfg=black ctermbg=white
 
 set tabstop=4
 set autoindent
@@ -32,18 +40,18 @@ set shiftwidth=4
 "nnoremap <silent>bn :bnext<CR>
 "nnoremap <silent>bb :b#<CR>
 
-" netrwã¯å¸¸ã«tree view
+" netrw‚Íí‚Étree view
 let g:netrw_liststyle = 3
-" CVSã¨.ã§å§‹ã¾ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã¯è¡¨ç¤ºã—ãªã„
+" CVS‚Æ.‚Ån‚Ü‚éƒtƒ@ƒCƒ‹‚Í•\¦‚µ‚È‚¢
 "let g:netrw_list_hide = 'CVS,\(^\|\s\s\)\zs\.\S\+'
-" 'v'ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã¨ãã¯å³å´ã«é–‹ãã€‚(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãŒå·¦å´ãªã®ã§å…¥ã‚Œæ›¿ãˆ)
+" 'v'‚Åƒtƒ@ƒCƒ‹‚ğŠJ‚­‚Æ‚«‚Í‰E‘¤‚ÉŠJ‚­B(ƒfƒtƒHƒ‹ƒg‚ª¶‘¤‚È‚Ì‚Å“ü‚ê‘Ö‚¦)
 let g:netrw_altv = 1
-" 'o'ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã¨ãã¯ä¸‹å´ã«é–‹ãã€‚(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãŒä¸Šå´ãªã®ã§å…¥ã‚Œæ›¿ãˆ)
+" 'o'‚Åƒtƒ@ƒCƒ‹‚ğŠJ‚­‚Æ‚«‚Í‰º‘¤‚ÉŠJ‚­B(ƒfƒtƒHƒ‹ƒg‚ªã‘¤‚È‚Ì‚Å“ü‚ê‘Ö‚¦)
 let g:netrw_alto = 1
 
 " SKK
 let skk_jisyo = '~/.skk-jisyo'
-let skk_large_jisyo = '~/SKK-JISYO.L'
+let skk_large_jisyo = '~/.emacs.d/SKK-JISYO.L'
 let skk_auto_save_jisyo = 1
 let skk_keep_state =0
 let skk_egg_like_newline = 1
@@ -51,6 +59,39 @@ let skk_show_annotation = 1
 let skk_use_face = 1
 
 let &statusline .= '%{SkkGetModeStr()}'
+
+" Neobundle
+set runtimepath+=~/vimfiles/bundle/neobundle.vim/
+" Required:
+call neobundle#begin(expand('~/vimfiles/bundle/'))
+" neobundle©‘Ì‚ğneobundle‚ÅŠÇ—
+NeoBundleFetch 'Shougo/neobundle.vim'
+" Unite
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'tacroe/unite-mark'
+"
+NeoBundle 'itchyny/lightline.vim'
+call neobundle#end()
+
+NeoBundleCheck
+
+" Required:
+filetype plugin indent on
+
+" “ü—Íƒ‚[ƒh‚ÅŠJn‚·‚é
+let g:unite_enable_start_insert=1
+" ƒoƒbƒtƒ@ˆê——
+noremap <silent> Ub :Unite buffer<CR>
+" ƒtƒ@ƒCƒ‹ˆê——
+noremap <silent> Uf :Unite -buffer-name=file file<CR>
+" Å‹ßg‚Á‚½ƒtƒ@ƒCƒ‹‚Ìˆê——
+noremap <silent> Um :Unite file_mru<CR>
+" ƒuƒbƒNƒ}[ƒNˆê——
+noremap <silent> Uc :<C-u>Unite bookmark<CR>
+"ƒuƒbƒNƒ}[ƒN‚É’Ç‰Á
+noremap <silent> Ua :<C-u>UnitebookmarkAdd<CR>
 
 " encoding
 nmap <silent> eu :set fenc=utf-8<CR>
@@ -60,31 +101,3 @@ nmap <silent> es :set fenc=cp932<CR>
 nmap <silent> eru :e ++enc=utf-8 %<CR>
 nmap <silent> ere :e ++enc=euc-jp %<CR>
 nmap <silent> ers :e ++enc=cp932 %<CR>
-
-" Neobundle
-set runtimepath+=~/vimfiles/bundle/neobundle.vim/
-" Required:
-call neobundle#begin(expand('~/vimfiles/bundle/'))
-" neobundleè‡ªä½“ã‚’neobundleã§ç®¡ç†
-NeoBundleFetch 'Shougo/neobundle.vim'
-" Unite
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'tacroe/unite-mark'
-call neobundle#end()
-
-NeoBundleCheck
-
-" Required:
-filetype plugin indent on
-
-" å…¥åŠ›ãƒ¢ãƒ¼ãƒ‰ã§é–‹å§‹ã™ã‚‹
-let g:unite_enable_start_insert=1
-" ãƒãƒƒãƒ•ã‚¡ä¸€è¦§
-noremap <silent> Ub :Unite buffer<CR>
-" ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§
-noremap <silent> Uf :Unite -buffer-name=file file<CR>
-" æœ€è¿‘ä½¿ã£ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸€è¦§
-noremap <silent> Um :Unite file_mru<CR>
-
