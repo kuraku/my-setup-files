@@ -11,37 +11,37 @@ set background=dark
 colorscheme wombat
 set guifont=M+2VM+IPAG_circle:h10:cSHIFTJIS
 
-set columns=90      "ƒEƒBƒ“ƒhƒE‚Ì•
-set lines=48        "ƒEƒBƒ“ƒhƒE‚Ì‚‚³
+set columns=90      "ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®å¹…
+set lines=48        "ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®é«˜ã•
 
 set number
 
-"ƒc[ƒ‹ƒo[‚ğ”ñ•\¦
+"ãƒ„ãƒ¼ãƒ«ãƒãƒ¼ã‚’éè¡¨ç¤º
 set guioptions-=T
-"ƒƒjƒ…[ƒo[‚ğ”ñ•\¦‚É‚·‚é
+"ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ¼ã‚’éè¡¨ç¤ºã«ã™ã‚‹
 "set guioptions-=m
 
-"¶‰E‚ÌƒXƒNƒ[ƒ‹ƒo[‚ğ”ñ•\¦‚É‚·‚é
+"å·¦å³ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã‚’éè¡¨ç¤ºã«ã™ã‚‹
 set guioptions-=r
 "set guioptions-=R
 set guioptions-=l
 "set guioptions-=L
-"…•½ƒXƒNƒ[ƒ‹ƒo[‚ğ”ñ•\¦‚É‚·‚é
+"æ°´å¹³ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã‚’éè¡¨ç¤ºã«ã™ã‚‹
 set guioptions-=b
 
-"“§‰ß
+"é€é
 gui
 set transparency=230
-"‚È‚É‚©‘«‚ç‚ñc
+"ãªã«ã‹è¶³ã‚‰ã‚“â€¦
 
-" IME‚Ìó‘Ô‚ğƒJƒ‰[•\¦
+" IMEã®çŠ¶æ…‹ã‚’ã‚«ãƒ©ãƒ¼è¡¨ç¤º
 if has('multi_byte_ime')
   highlight Cursor guifg=NONE guibg=Green
   highlight CursorIM guifg=NONE guibg=Purple
 endif
 
 """"""""""""""""""""""""""""""
-"WindowˆÊ’u‚Ì•Û‘¶‚Æ•œ‹A
+"Windowä½ç½®ã®ä¿å­˜ã¨å¾©å¸°
 """"""""""""""""""""""""""""""
 if has('unix')
   let s:infofile = '~/.vim/.vimpos'
@@ -90,14 +90,14 @@ cabbrev wqa <C-r>=(getcmdtype() == ':' && getcmdpos() == 1 ? 'wa\|tabonly\|only\
 "hi TabLineSel guibg=Red
 "hi CursorLine gui=underline
 
-"ƒNƒŠƒbƒvƒ{[ƒh‚ğWindows‚Æ˜AŒg‚·‚é
+"ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ã‚’Windowsã¨é€£æºã™ã‚‹
 set clipboard=unnamed
 
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'component': {
-      \   'readonly': '%{&readonly?"ğã":""}',
+      \   'readonly': '%{&readonly?"î‚¢":""}',
       \ },
-      \ 'separator': { 'left': 'ğñ', 'right': 'ğó' },
-      \ 'subseparator': { 'left': 'ğò', 'right': 'ğô' }
+      \ 'separator': { 'left': 'î‚°', 'right': 'î‚²' },
+      \ 'subseparator': { 'left': 'î‚±', 'right': 'î‚³' }
       \ }
