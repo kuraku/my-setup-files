@@ -14,13 +14,13 @@ hi clear CursorLine
 "set fileencodings=utf-8,latin1
 set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
 
-" ƒoƒbƒNƒAƒbƒvæ‚ç‚È‚¢
+" ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å–ã‚‰ãªã„
 set nobackup
-" ‘¼‚Å‘‚«Š·‚¦‚ç‚ê‚½‚ç©“®‚Å“Ç‚İ’¼‚·
+" ä»–ã§æ›¸ãæ›ãˆã‚‰ã‚ŒãŸã‚‰è‡ªå‹•ã§èª­ã¿ç›´ã™
 "set autoread
-" ƒXƒƒbƒvƒtƒ@ƒCƒ‹ì‚ç‚È‚¢
+" ã‚¹ãƒ¯ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ä½œã‚‰ãªã„
 set noswapfile
-" •Û‘¶‚Étab‚ğƒXƒy[ƒX‚É•ÏŠ·‚·‚é
+" ä¿å­˜æ™‚ã«tabã‚’ã‚¹ãƒšãƒ¼ã‚¹ã«å¤‰æ›ã™ã‚‹
 autocmd BufWritePre * :%s/\t/  /ge
 
 " status line
@@ -40,13 +40,13 @@ set shiftwidth=4
 "nnoremap <silent>bn :bnext<CR>
 "nnoremap <silent>bb :b#<CR>
 
-" netrw‚Íí‚Étree view
+" netrwã¯å¸¸ã«tree view
 let g:netrw_liststyle = 3
-" CVS‚Æ.‚Ån‚Ü‚éƒtƒ@ƒCƒ‹‚Í•\¦‚µ‚È‚¢
+" CVSã¨.ã§å§‹ã¾ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã¯è¡¨ç¤ºã—ãªã„
 "let g:netrw_list_hide = 'CVS,\(^\|\s\s\)\zs\.\S\+'
-" 'v'‚Åƒtƒ@ƒCƒ‹‚ğŠJ‚­‚Æ‚«‚Í‰E‘¤‚ÉŠJ‚­B(ƒfƒtƒHƒ‹ƒg‚ª¶‘¤‚È‚Ì‚Å“ü‚ê‘Ö‚¦)
+" 'v'ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã¨ãã¯å³å´ã«é–‹ãã€‚(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãŒå·¦å´ãªã®ã§å…¥ã‚Œæ›¿ãˆ)
 let g:netrw_altv = 1
-" 'o'‚Åƒtƒ@ƒCƒ‹‚ğŠJ‚­‚Æ‚«‚Í‰º‘¤‚ÉŠJ‚­B(ƒfƒtƒHƒ‹ƒg‚ªã‘¤‚È‚Ì‚Å“ü‚ê‘Ö‚¦)
+" 'o'ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã¨ãã¯ä¸‹å´ã«é–‹ãã€‚(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãŒä¸Šå´ãªã®ã§å…¥ã‚Œæ›¿ãˆ)
 let g:netrw_alto = 1
 
 " SKK
@@ -64,7 +64,7 @@ let &statusline .= '%{SkkGetModeStr()}'
 set runtimepath+=~/vimfiles/bundle/neobundle.vim/
 " Required:
 call neobundle#begin(expand('~/vimfiles/bundle/'))
-" neobundle©‘Ì‚ğneobundle‚ÅŠÇ—
+" neobundleè‡ªä½“ã‚’neobundleã§ç®¡ç†
 NeoBundleFetch 'Shougo/neobundle.vim'
 " Unite
 NeoBundle 'Shougo/unite.vim'
@@ -80,17 +80,17 @@ NeoBundleCheck
 " Required:
 filetype plugin indent on
 
-" “ü—Íƒ‚[ƒh‚ÅŠJn‚·‚é
+" å…¥åŠ›ãƒ¢ãƒ¼ãƒ‰ã§é–‹å§‹ã™ã‚‹
 let g:unite_enable_start_insert=1
-" ƒoƒbƒtƒ@ˆê——
+" ãƒãƒƒãƒ•ã‚¡ä¸€è¦§
 noremap <silent> Ub :Unite buffer<CR>
-" ƒtƒ@ƒCƒ‹ˆê——
+" ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§
 noremap <silent> Uf :Unite -buffer-name=file file<CR>
-" Å‹ßg‚Á‚½ƒtƒ@ƒCƒ‹‚Ìˆê——
+" æœ€è¿‘ä½¿ã£ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸€è¦§
 noremap <silent> Um :Unite file_mru<CR>
-" ƒuƒbƒNƒ}[ƒNˆê——
+" ãƒ–ãƒƒã‚¯ãƒãƒ¼ã‚¯ä¸€è¦§
 noremap <silent> Uc :<C-u>Unite bookmark<CR>
-"ƒuƒbƒNƒ}[ƒN‚É’Ç‰Á
+"ãƒ–ãƒƒã‚¯ãƒãƒ¼ã‚¯ã«è¿½åŠ 
 noremap <silent> Ua :<C-u>UnitebookmarkAdd<CR>
 
 " encoding
