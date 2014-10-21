@@ -14,7 +14,7 @@ set guifont=M+2VM+IPAG_circle:h10:cSHIFTJIS
 set columns=90      "ウィンドウの幅
 set lines=48        "ウィンドウの高さ
 
-set number
+"set number
 
 "ツールバーを非表示
 set guioptions-=T
