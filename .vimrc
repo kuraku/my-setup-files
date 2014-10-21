@@ -4,7 +4,11 @@ set runtimepath^=~/vimfiles
 
 syntax on
 set background=dark
-set autochdir
+
+"開いているバッファのディレクトリに移動
+if v:version >= 700
+    set autochdir
+endif
 
 set number
 set cursorline
@@ -51,7 +55,11 @@ let g:netrw_alto = 1
 
 " SKK
 let skk_jisyo = '~/.skk-jisyo'
-let skk_large_jisyo = '~/.emacs.d/SKK-JISYO.L'
+if filereadable('~/.emacs.d/SKK-JISYO.L')
+    let skk_large_jisyo = '~/.emacs.d/SKK-JISYO.L'
+elseif filereadable('~/SKK-JISYO.L')
+    let skk_large_jisyo = '~/SKK-JISYO.L'
+endif
 let skk_auto_save_jisyo = 1
 let skk_keep_state =0
 let skk_egg_like_newline = 1
@@ -61,37 +69,39 @@ let skk_use_face = 1
 let &statusline .= '%{SkkGetModeStr()}'
 
 " Neobundle
-set runtimepath+=~/vimfiles/bundle/neobundle.vim/
-" Required:
-call neobundle#begin(expand('~/vimfiles/bundle/'))
-" neobundle自体をneobundleで管理
-NeoBundleFetch 'Shougo/neobundle.vim'
-" Unite
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'tacroe/unite-mark'
-"
-NeoBundle 'itchyny/lightline.vim'
-call neobundle#end()
+if isdirectory(expand('~/vimfiles/bundle/'))
+    set runtimepath+=~/vimfiles/bundle/neobundle.vim/
+    " Required:
+    call neobundle#begin(expand('~/vimfiles/bundle/'))
+    " neobundle自体をneobundleで管理
+    NeoBundleFetch 'Shougo/neobundle.vim'
+    " Unite
+    NeoBundle 'Shougo/unite.vim'
+    NeoBundle 'Shougo/vimproc'
+    NeoBundle 'Shougo/neomru.vim'
+    NeoBundle 'tacroe/unite-mark'
+    "
+    NeoBundle 'itchyny/lightline.vim'
+    call neobundle#end()
 
-NeoBundleCheck
+    NeoBundleCheck
 
-" Required:
-filetype plugin indent on
+    " Required:
+    filetype plugin indent on
 
-" 入力モードで開始する
-let g:unite_enable_start_insert=1
-" バッファ一覧
-noremap <silent> Ub :Unite buffer<CR>
-" ファイル一覧
-noremap <silent> Uf :Unite -buffer-name=file file<CR>
-" 最近使ったファイルの一覧
-noremap <silent> Um :Unite file_mru<CR>
-" ブックマーク一覧
-noremap <silent> Uc :<C-u>Unite bookmark<CR>
-"ブックマークに追加
-noremap <silent> Ua :<C-u>UnitebookmarkAdd<CR>
+    " 入力モードで開始する
+    let g:unite_enable_start_insert=1
+    " バッファ一覧
+    noremap <silent> Ub :Unite buffer<CR>
+    " ファイル一覧
+    noremap <silent> Uf :Unite -buffer-name=file file<CR>
+    " 最近使ったファイルの一覧
+    noremap <silent> Um :Unite file_mru<CR>
+    " ブックマーク一覧
+    noremap <silent> Uc :<C-u>Unite bookmark<CR>
+    "ブックマークに追加
+    noremap <silent> Ua :<C-u>UnitebookmarkAdd<CR>
+endif
 
 " encoding
 nmap <silent> eu :set fenc=utf-8<CR>
