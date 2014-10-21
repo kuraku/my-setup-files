@@ -111,3 +111,20 @@ nmap <silent> es :set fenc=cp932<CR>
 nmap <silent> eru :e ++enc=utf-8 %<CR>
 nmap <silent> ere :e ++enc=euc-jp %<CR>
 nmap <silent> ers :e ++enc=cp932 %<CR>
+
+"Makeやgrepでcwindowを自動でひらくようにする
+if v:version >= 700
+    autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
+    autocmd QuickfixCmdPost l* lopen
+    "M-gでGrepする
+    if has('unix')
+        nmap <Esc>g :vimgrep  %<LEFT><LEFT>
+        nmap <Esc>f :cn<CR>
+        nmap <Esc>b :cp<CR>
+    elseif has('win32')
+        nmap <M-g> :vimgrep  %<LEFT><LEFT>
+        "M-P,Nで候補移動
+        nmap <M-f> :cn<CR>
+        nmap <M-b> :cp<CR>
+    endif
+endif
