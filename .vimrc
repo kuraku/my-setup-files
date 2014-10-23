@@ -54,19 +54,21 @@ let g:netrw_altv = 1
 let g:netrw_alto = 1
 
 " SKK
-let skk_jisyo = '~/.skk-jisyo'
-if filereadable('~/.emacs.d/SKK-JISYO.L')
-    let skk_large_jisyo = '~/.emacs.d/SKK-JISYO.L'
-elseif filereadable('~/SKK-JISYO.L')
-    let skk_large_jisyo = '~/SKK-JISYO.L'
+if filereadable(expand('~/vimfiles/plugin/skk.vim'))
+    let skk_jisyo = '~/.skk-jisyo'
+    if filereadable('~/.emacs.d/SKK-JISYO.L')
+        let skk_large_jisyo = '~/.emacs.d/SKK-JISYO.L'
+    elseif filereadable('~/SKK-JISYO.L')
+        let skk_large_jisyo = '~/SKK-JISYO.L'
+    endif
+    let skk_auto_save_jisyo = 1
+    let skk_keep_state =0
+    let skk_egg_like_newline = 1
+    let skk_show_annotation = 1
+    let skk_use_face = 1
+    
+    let &statusline .= '%{SkkGetModeStr()}'
 endif
-let skk_auto_save_jisyo = 1
-let skk_keep_state =0
-let skk_egg_like_newline = 1
-let skk_show_annotation = 1
-let skk_use_face = 1
-
-let &statusline .= '%{SkkGetModeStr()}'
 
 " Neobundle
 if isdirectory(expand('~/vimfiles/bundle/'))
@@ -128,3 +130,7 @@ if v:version >= 700
         nmap <M-b> :cp<CR>
     endif
 endif
+
+" for svn.exe
+" let $PATH = "c:/cygwin64/bin/;" . $PATH
+let $PATH = "c:/home/bin/svn-win32-1.7.13/bin;" . $PATH
