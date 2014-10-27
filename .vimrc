@@ -27,6 +27,9 @@ set noswapfile
 " 保存時にtabをスペースに変換する
 autocmd BufWritePre * :%s/\t/  /ge
 
+" .un~ を作らない
+set noundofile
+
 " status line
 set laststatus=2
 set statusline=%<%f\ %m%r%h%w
