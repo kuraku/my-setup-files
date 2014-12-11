@@ -6,9 +6,9 @@ syntax on
 set background=dark
 
 "開いているバッファのディレクトリに移動
-if v:version >= 700
-    set autochdir
-endif
+"if v:version >= 700
+"    set autochdir
+"endif
 
 set number
 set cursorline
@@ -17,6 +17,7 @@ hi clear CursorLine
 "set encoding=utf-8
 "set fileencodings=utf-8,latin1
 set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
+scriptencoding utf-8
 
 " バックアップ取らない
 set nobackup
@@ -85,8 +86,10 @@ if isdirectory(expand('~/vimfiles/bundle/'))
     NeoBundle 'Shougo/vimproc'
     NeoBundle 'Shougo/neomru.vim'
     NeoBundle 'tacroe/unite-mark'
-    "
+    
     NeoBundle 'itchyny/lightline.vim'
+    NeoBundle 'tpope/vim-fugitive'
+
     call neobundle#end()
 
     NeoBundleCheck
@@ -99,7 +102,7 @@ if isdirectory(expand('~/vimfiles/bundle/'))
     " バッファ一覧
     noremap <silent> Ub :Unite buffer<CR>
     " ファイル一覧
-    noremap <silent> Uf :Unite -buffer-name=file file<CR>
+    "noremap <silent> Uf :Unite -buffer-name=file file<CR>
     " 最近使ったファイルの一覧
     noremap <silent> Um :Unite file_mru<CR>
     " ブックマーク一覧
@@ -107,6 +110,18 @@ if isdirectory(expand('~/vimfiles/bundle/'))
     "ブックマークに追加
     noremap <silent> Ua :<C-u>UnitebookmarkAdd<CR>
 endif
+
+" VimFiler
+let g:vimfiler_as_default_explorer=1
+"セーフモードを無効にした状態で起動する
+let g:vimfiler_safe_mode_by_default = 0
+
+nnoremap <silent> Ud :VimFiler -auto-cd<CR>
+nnoremap <silent> Uf :cd %:p:h<CR>:VimFilerCurrentDir<CR>
+"nnoremap <silent> Uf :VimFilerCurrentDir<CR>
+"inoremap <C-f> <ESC>:VimFilerCurrentDir<CR>
+"
+"let g:vimfiler_enable_auto_cd = 1
 
 " encoding
 nmap <silent> eu :set fenc=utf-8<CR>
@@ -136,4 +151,32 @@ endif
 
 " for svn.exe
 " let $PATH = "c:/cygwin64/bin/;" . $PATH
-let $PATH = "c:/home/bin/svn-win32-1.7.13/bin;" . $PATH
+" let $PATH = "c:/home/bin/svn-win32-1.7.13/bin;" . $PATH
+"
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"\u2b64":""}',
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'MyFugitive',
+      \ },
+      \ 'mode_map': {'c': 'NORMAL'},
+      \ 'active': {
+      \   'left': [ ['mode', 'paste'], ['fugitive', 'filename', 'cakephp', 'currenttag', 'anzu'] ]
+      \ },
+      \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+      \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
+      \ }
+
+function! MyFugitive()
+    try
+        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && strlen(fugitive#head())
+            return "\u2b60".fugitive#head()
+        endif
+    catch
+    endtry
+    return ''
+endfunction
+
