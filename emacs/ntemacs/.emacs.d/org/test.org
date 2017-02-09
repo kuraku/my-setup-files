@@ -1,0 +1,38 @@
+* Appointments
+  :PROPERTIES:
+  :CATEGORY: Appt
+  :ARCHIVE:  %s_archive::* Appointments
+  :END:      
+   ...
+* Miscellaneous
+  :PROPERTIES:
+    :CATEGORY: todo
+    :ARCHIVE: %s_archive::* Miscellaneous
+  :END:
+
+* aaa :masuda:
+:STYLE: aa
+
+* DONE test
+
+** aaa
+   SCHEDULED: <2013-07-31 …>
+
+  1. aaa
+
+  2. 
+
+  ** aaa [/]
+  [ ] aa
+  - [X] aa
+  - [-] bb
+   	1. [X] cc
+   	2. [ ] 
+  - [ ] 
+  - [ ] 
+  - 
+
+* TODO aaaa
+
+#+TAGS: @work(w)  @home(h)  @tennisclub(t)  laptop(l)  pc(p)
+

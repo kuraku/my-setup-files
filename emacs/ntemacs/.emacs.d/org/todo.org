@@ -1,0 +1,37 @@
+* Appointments
+
+* Work
+
+** TODO image サーバ容量チェック 									   :TODO:
+	<2013-08-12 月 11:57>
+
+** TODO ドメイン移行
+	DEADLINE: <2013-12-31 火>
+	
+** DONE リスト取得
+どの環境でgrepするのが良いか？？
+   
+   [[file:z:/posren/%E8%A3%BD%E4%BD%9C%E8%B3%87%E6%96%99/%E9%96%8B%E7%99%BA%E3%82%B5%E3%83%BC%E3%83%90%E8%A8%AD%E5%AE%9A%E7%AD%89/201307%20%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E7%B5%B1%E5%90%88/%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E7%B5%B1%E5%90%88_130731.txt::%E3%83%BBBIG-IP%E8%A8%AD%E5%AE%9A%20(DH%E4%BE%9D%E9%A0%BC)][file:z:/posren/製作資料/開発サーバ設定等/201307 ドメイン統合/ドメイン統
+   合_130731.txt::・BIG-IP設定 (DH依頼)]]
+
+   <2013-08-02 金 14:27>
+
+   VM上の centosに落してgrepしてみている。いつもの環境
+   <2013-08-07 水 12:20>
+   
+** DONE 仕様理解して、ログ切れるのを対応したい
+   [[file:z:/personal/akira.masuda/Eclipse/workspace4.2-SVN-RTC-20130417/kunoichi-bin/gree_prod.sh::_usage()%20{][file:z:/personal/akira.masuda/Eclipse/workspace4.2-SVN-RTC-20130417/kunoichi-bin/gree_prod.sh::_usage() {]]
+   <2013-08-01 木 10:32>
+
+
+* Phone
+
+* Mail
+
+* Miscellaneous
+
+* org config
+#+STARTUP: hidestars
+#+STARTUP: showall
+#+TAGS: TODO(t) IDEA(i) NOTE(n) @work(w)
+

@@ -1,0 +1,249 @@
+* Note
+
+* <2016-11-07 Mon>
+
+** 画像削除
+
+2321351398201	2014-10-26 19:26:31
+
+/nas/reuse/img/pc/goods/
+
+6桁 232135
+2桁 13
+5桁 98201
+
+↓
+/nas/reuse/img/pc/goods/232135/13/98201/
+
+-> ls /nas/reuse/img/pc/goods/232135/13/98201/
+./  ../  1.jpg*  1_tn.jpg*  2.jpg*  2_tn.jpg*
+
+
+* <2016-10-27 Thu>
+** リユース環境高橋さんへの説明										   :TODO:
+
+-----------
+deployまでの流れ
+
+* gitプロジェクト
+** reuse-web Webサイト用
+ http://gitlab.dev.geonet.jp/reuse/reuse-web.git
+
+** reuse-tool 管理画面用
+ http://gitlab.dev.geonet.jp/reuse/reuse-tool.git
+
+
+** ファイル更新作業手順
+1) masterから作業用ブランチを作成する (BTS_XXX)
+2) 作業ブランチを修正
+3) 作業ブランチを origin/BTS_XXX (リモート)へコミット
+4) dev4(サイト)、dev2(tool) へマージしてテスト環境にて deploy ※1
+5) 本番環境にマージして、deploy ※1
+
+* ※1 本番化(deploy) 方法
+X:\10_事業別\05_受託事業\02_リユース\001_資料\999_その他資料\本番反映手順_ver2.xlsx
+こちらの資料に、作業サーバ、deploy対象の情報あり。
+本番環境へのマージは認証が必要です、承認者(増田、新井、尾花)
+
+* サーバ情報
+X:\10_事業別\05_受託事業\02_リユース\001_資料\999_その他資料\サーバ情報.xlsx
+-----------
+
+** 50_org-mode へまとめた											   :NOTE:
+rememberはやろうとした跡があったww
+   <2013-07-31 水>
+** こちらは仕事用													   :NOTE:
+だろうけど、tiddly もあるしなぁ。。。
+   <2013-08-01 木 10:22>
+** tiddlywiki <-> org-mode											   :NOTE:
+変換できればいいんじゃないかい。wiki にも
+   <2013-07-31 水>
+
+** Vagrant 															   :NOTE:
+入れた。マスターしたいが…
+
+ $ vagrant box add {title} {url}
+ 
+ (設定ファイルを置くディレクトリに移動する)
+ $ vagrant init {title}
+ $ vagrant up
+
+*** ディレクトリ
+ c:/home/vagrant (任意で、設定ファイル置き場)
+ c:/home/VirtualBox VMs/ (vmファイル置き場のよう、.vmdkとか .vbox ログも)
+ c:/home/.VirtualBox/ (VirtualBox.xml virtualboxの設定とか？ ログもある)
+ c:/HashiCorp/Vagrant/ (vagrant 実行モジュールとか)
+ c:/Documents and Settings/akira.masuda/.vagrant.d/ (boxes に box本体が置かれ
+ るようだ)
+
+*** snapshot
+
+vagrant plugin install vagrant-vbox-snapshot
+
+Url:	https://github.com/dergachev/vagrant-vbox-snapshot
+VirtualBox にはスナップショット機能があります。
+
+それを vagrant コマンドから気軽に使えるようにするのがこのプラグインです。
+
+vagrant 1.1 以上に対応しています。
+
+# スナップショットを名前を指定して取得します
+$ vagrant snapshot take <name>
+
+# 一番最新のスナップショットに戻します
+$ vagrant snapshot back
+
+# スナップショット一覧を表示します
+$ vagrant snapshot list
+
+# スナップショットを削除します
+$ vagrant snapshot delete <name>
+
+# 指定したスナップショット(名前)に戻します
+$ vagrant snapshot go <name>
+
+なんかうまく行かない。。
+   <2013-08-30 金 11:25>
+
+* Work
+
+** ゲオノミクスw イメージサーバ memo 								   :NOTE:
+*** DHへの依頼
+
+新しいimageサーバ2台のセットアップに関しまして、以下の構成でお願いいたします。
+基本的に、image04/05 の設定を元にしてください。
+
+■「imageサーバリプレイス用RX100S6(2台)」
+  Model     : FUJITSU RX100S6
+  OS        : CentOS_5.6(32bit/PAE) ※Centos6にしたいところです
+  Package   : base + development tools
+  Selinux   : Disable
+  Partation : (swap)  1G
+              (/)     - end
+  Disk構成  : 日次バックアップ構成
+
+  Network(外) : XXX.XXX.XXX.XXX ※BIG-IPの外部IPを振ってお知らせください
+
+  Network(内) : 10.0.226.XX(1台目) ※新規IPをお知らせください
+                10.0.226.XX(2台目)
+
+  Host名    : image01.geo-appli(1台目)
+              image02.geo-appli(2台目)
+
+  httpd-2.2.21
+  daemontools-0.76
+  ucspi-tcp-0.88
+  djbdns-1.05
+  ntp-4.2.2p1
+  qmail-1.03
+  rsync-3.0.6
+  Image::Imlib2 2.03
+  データホテル運用監視ツール類(ssh含む)
+
+  以前の情報より持ってきたものです。
+  インストールするバージョンについては 現imageサーバと同じものとしてください。
+
+◆ネットワークに関しまして：
+  ・ぽすれんimageサーバと同じ構成で、別のサイトとしてください
+    外部IPをBIG-IPに新規で振っていただて、その下に新画像サーバを置くことになります
+
+  ◇手順：
+     1) サーバインストール設定、内部N/W接続 (DH様)
+	 2) 画像ファイルの転送 (ぽすれん、DH様) ※重要
+     3) サービス設定 (ぽすれん)
+
+◆※ 画像ファイルの転送について
+  手順 2) にあります画像ファイルの転送に関しまして、現サービスサーバimage04/05 は稼動中ですので
+  現在転送元である  ssl.intra.posren(10.0.226.89) からコピーを行ないたいと考えております。
+
+  画像のrsyncを一時的に停止して /posren/image をまるごと新サーバの一つへコピーし、完了後もう一つのサーバへもコピーする、という流れを考えております。
+
+  現在の intraサーバの役目としては、
+  
+   ・BTS プロジェクト管理システム(社員と千葉・大阪のNOCからもアクセスがある)
+   ・プロジェクトwiki 社内データなど
+   ・画像転送元プール、定期的に画像サーバとsync
+
+  と重要な役割がありますので、運用に支障がない方法を取る必要があります。
+
+  ◇画像転送手順案
+    1) 画像ファイルの定期的な転送(cronでrsync) を停止する
+	2) 新 image01.geo-appli から intra:/posren3 を転送制限をしてコピー
+	3) 新image01.geo-appli と 新image02.geo-appli を直接(クロスケーブルなど) 接続して
+	   /posren3 をコピー
+
+
+	   
+  画像ファイルの初期転送では運用の無い夜間作業をする必要がありそうなのですが、
+  PrivateNet(10.0.226.*) を使用してコピーするには、
+  
+   1) サービス負荷の高い22時～1時くらいの時間帯はPrivateNetに負荷をかけたくない
+   2) それを避けて 2時とかから転送を始めた場合、朝の運用開始に
+  
+
+  一番良い方法は、intraサーバと新サーバを直接接続してファイル転送を行なう方法なのですが、intra側に空きの NICがありませんので難しそうです。
+  夜間、運用処理の無い時間に10.0.226.89を使用するというも考えられます。
+  ただその場合転送に時間がかかった場合、朝のNOCからの操作に重なった場合にはコピーを停止する必要があります(そこまで時間がかかるとは思っていないのですが)
+
+  
+  
+  一度コピーしてしまえば、その後は現画像サーバと同様にrsyncにて差分ファイルの転送のみの運用に乗せます。
+
+
+   <2013-08-20 火 12:39>
+
+** Fri Aug 16 19:38:03 2013 ( img.geonomics ww)
+   
+   /posren3/image/00755000/*/2.jpg
+   
+   でファイルサイズカウントしてみた。
+   
+   1.jpg
+   2,185,986
+   
+   2.jpg
+   3,847,681
+   
+   4.jpg
+   45,001,281
+   
+   
+   ディレクトリ数
+   #ls -1 |wc -l
+   758 - 3(File) = 755 dirs
+   
+   
+   * 1.jpg + 2.jpg
+   
+   (2185986 + 3847681) * 755 file =
+   
+   (* (+ 2185986 3847681) 755)
+   260451289
+   
+   260,451,289 → 260 MB
+   
+   * 1.jpg + 2.jpg + 4.jpg
+   
+   ** 4.jpg
+   (* 45001281 755)
+   
+   33975967155
+   
+   33,975,967,155 → 33GB
+   
+   ** 1.jpg + 2.jpg + 4.jpg
+   
+   (+ 260451289 33975967155)
+   34236418444
+   
+   34,236,418,444 → 34GB
+   
+   
+      <2013-08-16 金 18:26>
+
+
+* org config
+#+STARTUP: hidestars
+#+STARTUP: showall
+#+TAGS: TODO(t) IDEA(i) NOTE(n) @work(w)
+

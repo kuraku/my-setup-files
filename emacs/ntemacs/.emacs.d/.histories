@@ -1,0 +1,150 @@
+(setq extended-command-history
+	  '("eww" "magit-status" "abbrev-mode" "indent-region" "add-change-log-entry-other-window" "ma:create-reuse-etags" "helm-occur" "ma:only-tabspace-cut" "ma:tabspace-cut" "eww-search-words" "package-list-packages" "magit-log-buffer-file" "ediff" "query-replace-regexp" "magit-log" "glz-org" "php-mode" "helm-imenu" "list-faces-display" "list-colors-display" "helm-descbinds" "helm-colors" "occur" "sr-speedbar-toggle" "helm-etags-select" "sr-speedbar-open" "speedbar" "replace-regexp" "sql-mode" "org-mode" "package-autoremove" "package-autoremove" "locate-library" "eval-region" "eval-buffer" "w3m" "w3m-search" "ma:ms-gothic-font" "html-mode" "twit" "twittering-icon-mode" "eval-current-buffer" "eshell" "grep-find" "find-grep-dired" "revert-buffer" "version" "package-refresh-contents"))
+(setq command-history
+	  '((dired "c:/home/bin/" nil)
+		(dired "c:/home/bin/" nil)
+		(dired "c:/home/bin/" nil)
+		(dired "c:/home/bin/" nil)
+		(dired "c:/home/bin/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/" nil)
+		(goto-line 817 nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-tool/module/Console/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/bin/" nil)
+		(dired "c:/home/bin/" nil)
+		(dired "c:/home/bin/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/" nil)
+		(eww "http://enjoyukulele.com")
+		(helm-M-x nil "eww")
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Controller/" nil)
+		(magit-status nil)
+		(helm-M-x nil "magit-status")
+		(dired "c:/home/git/testproject.20170207/" nil)
+		(set-buffer-file-coding-system 'utf-8-unix nil)
+		(dired "c:/home/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(eww "http://www.kamakaukulelejp.com/talk/matsui3.php")
+		(helm-M-x nil
+				  #("eww" 0 3
+					(match-part "eww")))
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(query-replace "[" "\n[" nil
+					   (if
+						   (use-region-p)
+						   (region-beginning))
+					   (if
+						   (use-region-p)
+						   (region-end))
+					   nil nil)
+		(query-replace "[" "\n[" nil
+					   (if
+						   (use-region-p)
+						   (region-beginning))
+					   (if
+						   (use-region-p)
+						   (region-end))
+					   nil nil)
+		(switch-to-buffer "abc" nil 'force-same-window)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/confirm/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/confirm/" nil)
+		(dired-other-window "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/confirm/" nil)
+		(dired "c:/home/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(string-rectangle 6986 7264 "//")
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(query-replace "" "\n" nil
+					   (if
+						   (use-region-p)
+						   (region-beginning))
+					   (if
+						   (use-region-p)
+						   (region-end))
+					   nil nil)
+		(query-replace "{" "{" nil
+					   (if
+						   (use-region-p)
+						   (region-beginning))
+					   (if
+						   (use-region-p)
+						   (region-end))
+					   nil nil)
+		(switch-to-buffer "aa" nil 'force-same-window)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(goto-line 865 nil)
+		(goto-line 865 nil)
+		(moccur-grep-find "c:/home/vagrant/CentOS_6.6/Shared/reuse-tool/module/"
+						  '("installments"))
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Controller/" nil)
+		(find-alternate-file "c:/home/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Controller/OrdersController.php" t)
+		(find-alternate-file "c:/home/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Controller/OrdersController.php" t)
+		(find-alternate-file "c:/home/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Model/ConstantInterface.php" t)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(find-alternate-file "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/ConfirmController.php" t)
+		(moccur-grep-find "c:/home/vagrant/CentOS_6.6/Shared/reuse-tool/module/"
+						  '("installments_times"))
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/" nil)
+		(moccur-grep-find "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/"
+						  '("installments_times"))
+		(moccur-grep-find "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/"
+						  '("installment_times"))
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/delivery/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(abbrev-mode 'toggle)
+		(helm-M-x nil
+				  #("abbrev-mode" 0 11
+					(match-part "abbrev-mode")))
+		(dired "c:/Users/akira.masuda/Documents/2017/02_買取コンテンツ/golbuytest/tmpl/_inc/" nil)
+		(moccur-grep-find "c:/Users/akira.masuda/Documents/2017/02_買取コンテンツ/golbuytest/tmpl/_inc/"
+						  '("img/cmn/5up"))
+		(dired "c:/Users/akira.masuda/Documents/2017/02_買取コンテンツ/golbuytest/tmpl/_inc/" nil)
+		(dired "c:/Users/akira.masuda/Documents/2017/02_買取コンテンツ/golbuytest/tmpl/_inc/" nil)
+		(dired "c:/Users/akira.masuda/Documents/2017/02_買取コンテンツ/golbuytest/tmpl/_inc/apply_merit/" nil)
+		(moccur-grep-find "c:/Users/akira.masuda/Documents/2017/02_買取コンテンツ/golbuytest/tmpl/_inc/"
+						  '("apply_info/collect"))
+		(dired "c:/Users/akira.masuda/Documents/2017/02_買取コンテンツ/golbuytest/tmpl/_inc/" nil)
+		(dired "c:/Users/akira.masuda/Documents/2017/02_買取コンテンツ/golbuytest/tmpl/_inc/" nil)
+		(dired "c:/Users/akira.masuda/Documents/2017/02_買取コンテンツ/golbuytest/tmpl/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/" nil)
+		(goto-line 891 nil)
+		(dired "c:/home/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/" nil)))
+(setq file-name-history
+	  '("~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/ConstInterface.php" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Controller/OrdersController.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/LuecaOrder.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/MypageController.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/OrderAbstract.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/DeliveryController.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/delivery/membersPayData.tpl" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/ApiConnection.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/CreditOrder.php" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Model/ConstantInterface.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/ConfirmController.php" "c:/Users/akira.masuda/Documents/2017/02_買取コンテンツ/golbuytest/tmpl/index.html" "c:/Users/akira.masuda/Documents/2017/02_買取コンテンツ/golbuytest/tmpl/wcampaign/index.html" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/MpiresultController.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/mypage/history.tpl.20141126" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/mypage/lueca.tpl" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/MypageController.php.rej" "~/vagrant/CentOS_6.6/Shared/reuse-web/public/img/img/pc/btn/btn_confirmed-175.png" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/Categories.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/Members.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/confirm/membersPayData.tpl" "m:/Eclipse/workspace4.2-SVN-20121029/geo_online/lib/GeoOnline/Config/_production.pm" "~/vagrant/CentOS_6.6/Shared/reuse-web/library/tgMdkPHP/tgMdk/Lib/TGMDK_Transaction.php" "c:/Users/akira.masuda/Documents/2017/01/24_lueca_table/LuecaOrder.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/ShopController.php" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Console/Controller/OrdersSyncController.php" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Controller/MgznController.php" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Console/push.sh" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Controller/PushSettingsController.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/UserController.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/FinishController.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/ContactController.php" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Console/Controller/OrderDetailsSyncController.php" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Console/Controller/RecommendCategoryController.php" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Console/Controller/.gitignore" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/view/application/orders/index.tpl" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Controller/BlogsController.php" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Console/convert_goods_image.sh" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Console/Controller/AbstractSynchronizeController.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/delivery/_taka_membersPayData.tpl" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/delivery/_membersPayData.taka.tpl" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/delivery/membersPayData.20161215.tpl" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/smartPhone/application/delivery/membersPayData_REMOTE_3324.tpl" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Controller/DeliveryController_mas.php" "c:/Users/akira.masuda/Documents/2016/12/14_プライム画像チェック/NC_image_list.20161214.filelist/1.html" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Controller/AbstractController.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/smartPhone/application/delivery/membersPayData.tpl" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/view/application/orders/detail.tpl" "c:/Users/akira.masuda/Documents/2016/12/reuse_csv基幹連携/OnlineOrder-201612072000.tsv" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Entity/Orders.php" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Entity/CreditOrder.php" "~/ChangeLog" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/reduce/index.tpl" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/Model/CreditOrderMpi.php" "~/.emacs.d/org/note.org" "~/.emacs.d/inits/30_helm.el" "~/.emacs.d/inits/" "~/" "~/.emacs/" "~/.emacs.d/inits" "~/.emacs.d" "c:/Users/akira.masuda/Downloads/emacs-25.1/bin/" "~/.emacs.d/" "c:/Users/akira.masuda/Documents/2016/10/21_チャンネルSSL証明書/" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/Controller/" "/plink:127.0.0.1#2206:/home/masuda/project/" "/plink:127.0.0.1#2206:/home/masuda/" "c:/Users/akira.masuda/Documents/2016/10/21_チャンネルSSL証明書/CSR_内容.txt" "m:/Eclipse/workspace4.2-SVN-20121029/geo_smarket/etc/httpd/" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/goods/reuse.tpl" "~/vagrant/CentOS_6.6/Shared/reuse-tool/" "/plink:127.0.0.1#2206:/home/masuda" "/plink:masuda@127.0.0.1#2206:/home/masuda" "/plink:masuda@127.0.0.1:2206:/home/masuda" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/smartPhone/application/goods/" "~/vagrant/CentOS_6.6/Shared/reuse-web/module/Application/view/release/default/application/goods/" "~/git/twittering-mode/" "~/git/twittering-mode/win-curl/" "~/git" "m:/" "~/project/Reuse/" "~/bin/" "~/bin/reusephp_etags.bat" "~/project/Reuse/test01.csv" "~/project/Reuse" "~/.emacs.d/inits/.40_krk_twittering.el" "~/.emacs.d/elpa/" "~/.emacs.d/org/" "~/project/\"Mojolicious/\"" "~/project/\"141004_Books/\"" "~/project/" "~/\"project/\"" "~/\".emacs.d/\"" "~/.emacs.d/elpa/w3m-20160422.354/" "~/.emacs.d/elisp/" "m:/Eclipse/workspace4.2-SVN-20121029/" "m:/Eclipse/workspace4.2-SVN-RTC-20130417/" "m:/Eclipse/workspace4.2-SVN-20121029/posren3_rakuten/etc/httpd/" "m:/Eclipse/workspace4.2-SVN-20121029/posren3_rakuten/" "~/vagrant/CentOS_6.6/Shared/reuse-tool/module/Application/view/application/members/"))
+(setq query-replace-history
+	  '("\n[" "[" "{" "\n" "" "{" "/" "\\" "	" "," "{\n" "'>" "$" "<img src='http://image.posren.com/img2/" "^" "" "/posren3/image/" ", " "\n[" "[" "fff" "\\[" "aaa" "\\\\[" "\n\\\\[" "\n\\[" "	+" "\\\\t+" "\\t+" "\\1" "^\\([0-9]+\\)\\t+/nas/.*$" "^\\([0-9]+\\) +/nas/.*$" " +/nas/.*$" "^\\([0-9]+\\) */nas/.*$" "^\\([0-9]+\\) /nas/.*" "^\\([0-9]+\\) /nas/" ".* \\(/nas/.*\\)$" ".*( /nas/.*)$" " /nas/.*$" " | wc -l" "'" " +" "    "))
+(setq regexp-history
+	  '("installments" "installments_times" "installment_times" "img/cmn/5up" "apply_info/collect" "CreditOrder" "$_em" "_em" "InvalidException" "TOP_MAIN" "w_cam" "width" "null" "hidden" "wait" "length" "null" "empty" "lueca" "sha1" "hash" "creditinfo" "curl" "IP" "SMTP" "otherCreditCard" "CORD_MIN_" "CARD_MIN_" "payment_choose_member" "changeDisabled" "flow_input" "getmemberscreditbycardno" "setorderstate" "getorderstates" "settlement" "payment" "”" "_URL15_" "dev-" "Modified" "ENV_RELE" "/img/" "mail" "ORDER_MAIL_REPLACE_TAG_PAY_TYPE" "==PAY_TYPE==" "getPaymentTypes" "gcm_queues" "カード" "through" "/nas/reuse/" "ROOT_PATH" "/nas/" "ROOT_PATH" "PATH_GOODS_IMG_PC" "img/temp/" "/nas/" "pc/goods" "/goods/" "/nas/" "AMEX" "display-buffer" "self" "logutil" "logUtil" "log" "util" "utillog" "APPLICATION_" "reuse-" "nullable=false" "null" "javascript" "cardExpire" "reqCardExpire" "reuse-" "PATH_GOODS" "upload" "address" "NAME" "ORDER_MAIL_REPLACE_TAG_NAME" "getGoodsByParams" "STATUS_SHIPMENT" "TOOL_" "logInfo" "log" "Capture" "response" "waiting_count" "waiting" "onclick" "javascript" "function" "JCB" "CreditInfo" "credit-edit-b" "creditCardInfo" "$creditInfo['creditCardType']" "creditCardInfo" "registeredMyCard" "card-edit-btn" "CREDIT_DESTINATION_VISA" "element" "javascript" "alert" "javascript" "AG33" "誠に恐れ入りますが、" "preOrderForMpi" "authCreditMpi" "setMemberDelvAddrs" "TIME_ZONE" "TIME_ZONE_" "reditOrder" "内容に変更が無ければ「注文を確定する」" "reditOrder" "setCreditOrder" "reditOrders" "setCreditOrders" "calcOrder" "ordersEntityList" "_ordersEntityList"))
+(setq shell-command-history
+	  '(", " "jq ."))

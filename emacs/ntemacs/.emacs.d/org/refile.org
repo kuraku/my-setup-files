@@ -1,0 +1,121 @@
+* org-mode MEMO
+S-TAB open/close
+C-c . 日付 <2013-08-07 水>
+c-u C-c . 日時 <2013-08-07 水 12:26>
+S-↑ S-↓ 日付時間を進める/戻す
+C-c C-t TODO/DONE/WAIT
+C-c C-q タグづけ
+M-RET 次項目の作成
+Alt-↑ Alt-↓ 項目入れ替え (ESCではうまく行かない？)
+Alt-→ Alt-← でインデント変更 (ESCではうまく行かない？)
+
+箇条書き
+ - まずは「-」を記入
+ - M-RETを入力
+ - S-→，S-←で「-」を数字などに変化させる
+
+装飾文字
+ 取り消し
+  +hoge+
+ アンダーライン
+  _hoge_
+ 斜体
+  /hoge/
+ 強調
+  *hoge*
+ コード
+  =code=
+
+checkbox
+  [/] しておくとカウントが出る
+  [ ] [X] C-c C-c で切替え、カウントに反映される
+
+テンプレート
+  <e [tab] で #+begin_example, #+end_example
+  <s ソース
+  <q quote
+  <h html
+
+http://www.geocities.jp/km_pp1/org-mode/org-mode-document.html
+http://d.hatena.ne.jp/l1o0/20100221/1266755071
+
+* New Ideas
+
+
+* Note
+** cygwin入れてみたがなにかいいことないかね							   :NOTE:
+   <2013-08-02 金 12:42>
+
+** VMware → VirtualBox ディスク変換 											   :NOTE:
+  (akira.masuda@PD021)-(c:/home/VirtualBox VMs/test)
+ -> c:/Program\ Files/Oracle/VirtualBox/VBoxManage.exe clonehd NetBSD.vmdk NetBSD.vdi
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Clone hard disk created in format 'VMDK'. UUID: 7f388ba3-58a0-49e4-aa7f-70f5239238db
+   <2013-10-28 月 12:55>
+** note																   :NOTE:
+  dasu
+   <2013-10-28 月 14:29>
+
+* ToDo
+** TODO	ドメインスケジュール															   :TODO:
+
+  ■スケジュール作る
+  項目上げ、
+
+  ネットワーク/インフラ
+    BIG-IP
+    DNS
+
+  プログラム/コンテンツ
+    VM環境検証
+
+      Apache
+        ssl. をやめる
+        モバイルをまとめる
+
+      動作
+        ログイン/表示
+        レンタル
+        決済
+          コンビニ(イーコン)影響
+        LDIDログイン
+        アフィリエイト(ぽすれん)
+        レビュー/トラックバック
+
+    開発環境
+      DB
+        カラム特定/一括変換
+
+  アフィリエイト(他サービス)
+  SEO
+
+  通知
+    注意喚起
+      外部リンク
+    ヘルプ
+
+  メンテナンス
+    サイト告知 11/5
+    実施 11/19
+
+   <2013-09-18 水 10:17>
+** TODO dev05 VBox													   :TODO:
+   apache,modperl で、ぽすれんシステム稼動したスナップショット、
+   検索が動いていないので、/etc/Posren3Solr-conf.pl (?ファイル名確認) を追加すること。
+   んで、スナップ取りなおす。
+   
+   <2013-09-19 木 12:26>
+** TODO domain SSL														:ODO:
+   移行後古いSSl があった場合、sslキーは期限切れ。
+
+   古いSSL URLへの接続を考慮する必要がある？？
+   <2013-09-20 金 14:28>
+** TODO abc 														   :TODO:
+   [[file:~/.emacs.d/inits/50_org-mode.el::(auto-fill-mode%20-1)%20)][file:~/.emacs.d/inits/50_org-mode.el::(auto-fill-mode -1) )]]
+   <2013-10-28 月 14:23>
+
+* org config
+#+STARTUP: hidestars
+#+STARTUP: showall
+#+TAGS: TODO(t) IDEA(i) NOTE(n) @work(w)
+

@@ -1,0 +1,128 @@
+exit
+ping 10.70.164.175
+ip a
+ipconfig.exe 
+ping 10.70.164.175
+split
+ls
+split --help
+split -l 1000 1.html 
+ls
+split -l 1000 1.html 1-
+ls
+split -l 1000 2.html 2-
+split -l 1000 3.html 3-
+split -l 1000 4.html 4-
+split -l 1000 5.html 5-
+split -l 1000 6.html 6-
+split -l 1000 7.html 7-
+ls
+ftp
+ftp 10.70.160.38
+ipconfig /all
+ls
+ls
+cd vagrant/
+ls
+cd CentOS_6.6/
+ls
+cd Shared/
+ls
+cd ..
+ls
+cd ..
+ls
+cd CentOS_6.6/
+ls
+vagrant status
+vagrant up
+ls
+cd Shared/
+ls
+cd reuse-web/
+ls
+ls -lrt
+jgit
+git
+ls
+ls
+cd ../reuse-tool/module/Console/
+ls
+gity
+git
+git update-index --add --chmod=+x criteo.sh
+cd ../../..
+ls
+cd ..
+ls
+vagrant status
+vagrant halt
+vagrant status
+which git
+ls
+which git
+ls
+ls -l
+touch
+touch --help
+touch -t 12010000 membersPayData.tpl
+ls
+ls -l
+head aaa
+ls
+ls -l
+ls
+ls
+ls -l
+pwd
+ls -a
+exit
+ls
+ls -l
+ls url
+ls org
+ipconfig /apll
+ipconfig /all
+exit
+echo $EDITOR
+echo $GIT_EDITOR
+echo %EDITOR%
+dig
+dig rental.rakuten.jp
+exit
+dig buy.geo-online.co.jp
+exit
+ipconfig /all
+ls bin
+ls -lrt
+ls -lrt bin
+ruby --help
+./ruby.exe
+ruby.exe
+exit
+ls
+cd vagrant/
+ls
+cd CentOS_6.6/
+ls
+cd Shared/
+ls
+cd reuse-web/
+ls
+ls -l
+git status
+git diff --name-only origin/master revesion
+git diff --name-only origin/master revision
+git diff --name-only origin/master revision
+git diff --name-only HEAD^ HEAD
+git diff --name-only origin/master HEAD
+git diff --name-only origin/dev3.2ndstreet.jp HEAD
+ls
+git log
+ls
+git log --pretty=format:"[%ad] %h %an : %s" composer.phar
+git log composer.phar
+git log --oneline --graph --decorate composer.phar
+git log --oneline --graph --decorate --pretty=format:"[%ad] %h %an : %s" composer.phar
+git log --oneline --graph --decorate --pretty=format:[%ad] %h %an : %s composer.phar
+git log --oneline --graph --decorate --pretty=format:'[%ad] %h %an : %s' composer.phar

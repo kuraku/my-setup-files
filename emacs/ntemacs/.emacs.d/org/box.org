@@ -1,0 +1,27 @@
+#(setq org-ditaa-jar-path
+#   "c:/home/.emacs.d/elisp/org-7.5/contrib/scripts/ditaa.jar")
+
+* ditaa
+  #+begin_ditaa images/ditaa_example.png
++---------+       +--------+       +--------+
+|         |---=-->|cRED    |       |cGRE    |
+| SOMEDAY |       |  TODO  |---=-->|  DONE  |
+|         |<--=---|        |       |        |
++---------+       +--------+       +--------+
+                     |  ^              ^
+                     :  |              |
+                     |  :              :
+                     v  |              |
+                  +--------+           |
+                  |cYEL    |           |
+                  |  WAIT  |---=-------+
+  　              |        |
+  ┌────┐    +--------+
+  ├───┐│
+  │      ├┘
+  └───┘　　　　
+
+  │
+  ┝s  
+                  
+  #+end_ditaa
