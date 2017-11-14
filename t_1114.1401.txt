@@ -14,3 +14,16 @@ ewriteCond %{REQUEST_URI} !^/index.php
                 php_value mbstring.language Japanese
                 php_value mbstring.http_input UTF-8
                 php_value mbstring.http_output UTF-8
+
+
+
+
+
+
+
+
+
+
+
+fffffffffffffffffffffffffffffffffffffffffffff
+fffffffffffffffffffffffffffffffffffff
