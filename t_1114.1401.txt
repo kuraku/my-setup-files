@@ -1,0 +1,16 @@
+ewriteCond %{REQUEST_URI} !^/index.php
+                RewriteCond %{REQUEST_URI} !^/mobile/
+                RewriteCond %{REQUEST_URI} !^/exp/mobile/
+                RewriteCond %{HTTP_USER_AGENT} ^(DoCoMo|J-PHONE|KDDI|DDIPOKET|UP\.Browser|J-PHONE|Vodafone|SoftBank).*$
+                RewriteRule ^.*$ http://www.2ndstreet.jp/exp/mobile/ [R=301,L]
+
+                RewriteCond %{REQUEST_FILENAME} -s [OR]
+                RewriteCond %{REQUEST_FILENAME} -l [OR]
+                RewriteCond %{REQUEST_FILENAME} -d
+                RewriteRule ^.*$ - [NC,L]
+                RewriteRule ^.*$ /index.php [NC,L]
+
+                php_value include_path ".:/usr/lib64/php:/home/httpd/reuse-web/library"
+                php_value mbstring.language Japanese
+                php_value mbstring.http_input UTF-8
+                php_value mbstring.http_output UTF-8
