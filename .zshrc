@@ -1,32 +1,41 @@
 # Generic .zshrc file for zsh 5
 #
 # MASUDA A
-# for windows cygwin zsh
 
 # Search path for the cd command
 #cdpath=(.. ~ ~/src ~/zsh)
 
+# remove /usr/games and /usr/X11R6/bin if you want
+PATH=$HOME/bin:$HOME/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/usr/X11R6/bin; export PATH
+
+LD_LIBRARY_PATH=$HOME/local/lib; export LD_LIBRARY_PATH
+
+TERM=xterm-256color; export TERM
+
 ## get hostname
 function gethost(){
   hostname=`hostname`
+  dev='dev'
   case ${hostname} in
   '5a-c08-b5.data-hotel.net') # ASHIBA
-    host='zero'
+    dev='zero'
     ;;
   '5a-c04-c3.data-hotel.net')
-    host='dev05'
+    dev='dev05'
     ;;
   '5a-c08-a5.data-hotel.net')
-    host='dev06'
+    dev='dev06'
     ;;
   '5a-c08-a6.data-hotel.net')
-    host='dev07'
+    dev='dev07'
     ;;
-  *)
-    host=${hostname}
+  '5a-c04-d2.data-hotel.net')
+    dev='intra'
+    ;;
+   *)
     ;;
   esac
-  echo ${host}
+  echo ${dev}
 }
 host=`gethost`
 
@@ -44,27 +53,45 @@ case ${OS} in
     ;;
 esac
 
+#alias emacs='~/local/bin/emacs'
 alias pu=pushd
 alias po=popd
 alias d='dirs -v'
 alias h=history
-alias sc='screen -U -s zsh'
-#alias sc='screen -U -S mas -s zsh'
-#alias scu='~/local/bin/screen -S utf8 -U -s zsh'
-#alias vsc='~/local/bin/vscreen -S zero -s zsh'
+
+alias j=jobs
+alias fg1='fg %1'
+alias fg2='fg %2'
+alias fg3='fg %3'
+
+alias sc='~/local/bin/screen'
+#alias sc='~/local/bin/screen -s zsh'
+#alias sc='~/local/bin/screen -S zero -s zsh'
+alias scu='~/local/bin/screen -S utf8 -U'
+alias vsc='~/local/bin/vscreen -S'
 alias nie='~/bin/screenie'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
+alias emacs='~/local/bin/emacs'
+alias emacs-daemon='~/local/bin/emacs --daemon'
+alias emacs-kill='~/local/bin/emacsclient -e "(kill-emacs)"'
+alias emacsclient='~/local/bin/emacsclient -nw'
 #
 alias psx='ps ax -fl'
-#alias vless='/usr/local/share/vim/vim73/macros/less.sh'
+alias vless='/usr/local/share/vim/vim73/macros/less.sh'
 
 alias diff=colordiff
+alias M='| more'
 
-# é–‹ç™ºã‚µãƒ¼ãƒãƒ¼
+# ³«È¯¥µ¡¼¥Ð¡¼
+#alias d1='sudo ssh masuda@dev01.posren-new'
+#alias d2='sudo ssh masuda@dev02.posren-new'
+#alias d3='sudo ssh masuda@dev03.posren-new'
+#alias d4='sudo ssh masuda@dev04.posren-new'
 alias d5='sudo ssh masuda@dev05.posren-new'
 alias d6='sudo ssh masuda@dev06.posren-new'
 alias d7='sudo ssh masuda@dev07.posren-new'
+alias d8='sudo ssh masuda@dev08.posren-new'
 
 # cvs
 alias cvsupdate='sudo -u edge-dev cvs up -dP'
@@ -73,8 +100,28 @@ alias cvsstatus='sudo -u edge-dev cvs status'
 alias cvsdiff='sudo -u edge-dev cvs diff'
 
 #svn
-alias svnstatus='sudo -u edge-dev svn status'
+alias svnstatus='sudo -u edge-dev svn -uv status'
 alias svnupdate='sudo -u edge-dev svn up'
+alias svndiff='sudo -u edge-dev svn diff -r COMMITTED:HEAD'
+
+alias dstat-='dstat -tplndcm'
+
+alias check-color='for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo'
+
+## servers see ssh_hosts
+#alias slogin='sudo ssh $(cat ~/ssh_hosts||awk "{print \$3}")'
+alias slogin='sudo ssh $(cat ~/ssh_hosts|peco|awk "{print \$3}")'
+alias ssh_checksize='sudo ssh $(cat ~/ssh_hosts|peco|awk "{print \$3}") "df -h" '
+
+#alias dblogin='/usr/local/mysql/bin/mysql $(cat ~/db_hosts||awk "{printf(\"-h%s -u%s -p%s %s\",\$3,\$4,\$5,\$6,\$2)}")'
+alias dblogin='/usr/local/mysql/bin/mysql $(cat ~/db_hosts|peco|awk "{printf(\"-h%s -u%s -p%s %s\",\$3,\$4,\$5,\$6,\$2)}")'
+
+alias watch1='watch -n 1 --differences=cumulative'
+
+alias Ymd='echo `date +%Y%m%d`'
+alias Ymdt='echo `date +%Y%m%d.%H%M`'
+
+alias sourceIP='wget -q http://www.luft.co.jp/cgi/ipcheck.php -O - |grep "name=\"IP\""'
 
 # emacs key
 bindkey -e
@@ -82,6 +129,7 @@ bindkey -e
 # Hosts to use for completion
 hosts=(`hostname` tigris anjyu lsheep )
 
+#
 # Set prompts
     #PROMPT="%{${fg[red]}%}[%n@${host}]%(!.#.$) %{${reset_color}%}"
     #PROMPT2="%{${fg[red]}%}%_> %{${reset_color}%}"
@@ -90,7 +138,6 @@ hosts=(`hostname` tigris anjyu lsheep )
 
 autoload colors
 colors
-
 case ${host} in
   'zero')
     PROMPT="%{${fg[blue]}%}[%n@${host}:%/]%{${reset_color}%}
@@ -107,7 +154,7 @@ case ${host} in
     RPROMPT=""
     ;;
   *)
-    PROMPT="%{${fg[cyan]}%}[%n@${host}:%/]%{${reset_color}%}
+    PROMPT="%{${fg[blue]}%}[%n@${host}:%/]%{${reset_color}%}
 %{${fg[yellow]}%}(!%!)-(jobs:%j)%{${reset_color}%}%(!.#.$) "
     PROMPT2="%{${fg[red]}%}%_> %{${reset_color}%}"
     SPROMPT="%{${fg[red]}%}correct: %R -> %r [nyae]? %{${reset_color}%}"
@@ -118,41 +165,35 @@ esac
 DIRSTACKSIZE=20
 
 ##
-HISTFILE=$HOME/.zsh-history           # å±¥æ­´ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã«ä¿å­˜ã™ã‚‹
-HISTSIZE=1000                         # ãƒ¡ãƒ¢ãƒªå†…ã®å±¥æ­´ã®æ•°
-SAVEHIST=1000                         # ä¿å­˜ã•ã‚Œã‚‹å±¥æ­´ã®æ•°
-setopt extended_history               # å±¥æ­´ãƒ•ã‚¡ã‚¤ãƒ«ã«æ™‚åˆ»ã‚’è¨˜éŒ²
-function history-all { history -E 1 } # å…¨å±¥æ­´ã®ä¸€è¦§ã‚’å‡ºåŠ›ã™ã‚‹
-setopt share_history                  # ã™ã¹ã¦ã® zsh ã®ãƒ—ãƒ­ã‚»ã‚¹ã§å±¥æ­´ã‚’å…±æœ‰
-
-LD_LIBRARY_PATH=$HOME/local/lib
+HISTFILE=$HOME/.zsh-history           # ÍúÎò¤ò¥Õ¥¡¥¤¥ë¤ËÊÝÂ¸¤¹¤ë
+HISTSIZE=1000                         # ¥á¥â¥êÆâ¤ÎÍúÎò¤Î¿ô
+SAVEHIST=1000                         # ÊÝÂ¸¤µ¤ì¤ëÍúÎò¤Î¿ô
+setopt extended_history               # ÍúÎò¥Õ¥¡¥¤¥ë¤Ë»þ¹ï¤òµ­Ï¿
+function history-all { history -E 1 } # Á´ÍúÎò¤Î°ìÍ÷¤ò½ÐÎÏ¤¹¤ë
+setopt share_history                  # ¤¹¤Ù¤Æ¤Î zsh ¤Î¥×¥í¥»¥¹¤ÇÍúÎò¤ò¶¦Í­
 
 case ${host} in
   'dev07')
     #LANG="ja_JP.UTF-8"
     LANG="ja_JP.utf8"
     ;;
-  'PD021')
-    LANG="ja_JP.utf8"
-    ;;
   *)
-    LANG="ja_JP.utf8"
+    LANG="ja_JP.eucJP"
     ;;
 esac
 
 ## % history-all | grep find | grep tr
 
-# cdã§pushdã™ã‚‹ã€‚
+# cd¤Çpushd¤¹¤ë¡£
 setopt auto_pushd
-
-# pushdã§åŒã˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’é‡è¤‡ã—ã¦pushã—ãªã„ã€‚
+# pushd¤ÇÆ±¤¸¥Ç¥£¥ì¥¯¥È¥ê¤ò½ÅÊ£¤·¤Æpush¤·¤Ê¤¤¡£
 setopt pushd_ignore_dups
 
-## PROMPTå†…ã§å¤‰æ•°å±•é–‹ãƒ»ã‚³ãƒžãƒ³ãƒ‰ç½®æ›ãƒ»ç®—è¡“æ¼”ç®—ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
+## PROMPTÆâ¤ÇÊÑ¿ôÅ¸³«¡¦¥³¥Þ¥ó¥ÉÃÖ´¹¡¦»»½Ñ±é»»¤ò¼Â¹Ô¤¹¤ë¡£
 setopt prompt_subst
-## PROMPTå†…ã§ã€Œ%ã€æ–‡å­—ã‹ã‚‰å§‹ã¾ã‚‹ç½®æ›æ©Ÿèƒ½ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã€‚
+## PROMPTÆâ¤Ç¡Ö%¡×Ê¸»ú¤«¤é»Ï¤Þ¤ëÃÖ´¹µ¡Ç½¤òÍ­¸ú¤Ë¤¹¤ë¡£
 setopt prompt_percent
-## ã‚³ãƒ”ãƒšã—ã‚„ã™ã„ã‚ˆã†ã«ã‚³ãƒžãƒ³ãƒ‰å®Ÿè¡Œå¾Œã¯å³ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆã‚’æ¶ˆã™ã€‚
+## ¥³¥Ô¥Ú¤·¤ä¤¹¤¤¤è¤¦¤Ë¥³¥Þ¥ó¥É¼Â¹Ô¸å¤Ï±¦¥×¥í¥ó¥×¥È¤ò¾Ã¤¹¡£
 setopt transient_rprompt
 
 ## cdr 
@@ -189,27 +230,45 @@ if [ -f $HOME/db.zsh ]; then
   source $HOME/db.zsh &&  echo 'load ...db.zsh'
 fi
 
+if [ -f $HOME/auto_jump.zsh ]; then
+  source $HOME/auto_jump.zsh &&  echo 'load ...auto_jump.zsh'
+fi
+
 ## for tramp
 case "${TERM}" in
 dump | emacs)
     PROMPT="%n@%~%(!.#.$)"
     RPROMPT=""
-    unsetopt zle
+    [[ $EMACS = t ]] && unsetopt zle
     ;;
 esac
 
 ## 2013-11
-# TAB ã§é †ã«è£œå®Œå€™è£œã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
+# TAB ¤Ç½ç¤ËÊä´°¸õÊä¤òÀÚ¤êÂØ¤¨¤ë
 setopt auto_menu
-# è£œå®Œå€™è£œã®ã‚«ãƒ¼ã‚½ãƒ«é¸æŠžã‚’æœ‰åŠ¹ã«
+# Êä´°¸õÊä¤Î¥«¡¼¥½¥ëÁªÂò¤òÍ­¸ú¤Ë
 zstyle ':completion:*:default' menu select=1
 # KILL
 zstyle ':completion:*:processes' menu yes select=2
-# è‰²ã¤ãã®è£œå®Œ
-#zstyle ':completion:*' list-colors di=34 fi=0
+# ¿§¤Ä¤­¤ÎÊä´°
+zstyle ':completion:*' list-colors di=34 fi=0
+
+## for 
+export PYTHONPATH=~//lib/python2.6/site-packages:$PYTHONPATH
+alias percol=~/percol/bin/percol
+
+alias selkill='ps aux | peco | awk "{print \$2}" | xargs kill'
+alias prockill='ps aux | peco | awk "{print \$2}" | xargs kill'
+alias selproc='ps aux | peco | awk "{print \$2}" | xargs'
+alias proccheck='ps aux | peco | awk "{print \$2}" | xargs'
+alias procinfo='ps aux | peco | awk "{print \$2}" | xargs -i% cat /proc/%/status'
+
+alias hist='history | peco | awk "{ gsub(/ +[0-9]+/,\"\" ); print }" | bash'
 
 ## end of .zshrc
 
+# module version
+alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
 
 ## 13.11.15(fri)-10:51
 ## zaw
@@ -222,19 +281,46 @@ source $HOME/zaw/zaw.zsh || { echo '...skip(source error)'; return 1; }
 zstyle ':filter-select' case-insensitive yes
 zstyle ':filter-select' max-lines $(($LINES / 2))
 
-bindkey '^@' zaw-cdr # zaw-cdrã‚’bindkey
+bindkey '^@' zaw-cdr # zaw-cdr¤òbindkey
 bindkey '^R' zaw-history
 
 ## bindkey
-bindkey -r '^Q' #remove
-bindkey '^X^q' zaw-history
-bindkey '^Xq' zaw-history
+#bindkey -r '^Q' #remove
+#bindkey '^Q^q' zaw-history
+#bindkey '^Qq' zaw-history
+
+bindkey '^Xb' zaw-bookmark
+bindkey '^Xa' zaw-bookmark-add-buffer
 
 #bindkey '^Qh' zaw-history
+bindkey '^@' zaw-cdr
 bindkey '^Xd' zaw-cdr # r
 bindkey '^Xt' zaw-cdd
 bindkey '^Xr' zaw-dirstack # d
 bindkey '^Xp' zaw-process
+# bindkey '^Qgf' zaw-git-files
+# bindkey '^Qgd' zaw-git-dirs
+# bindkey '^Qgl' zaw-git-log
+
+# http://d.hatena.ne.jp/kei_q/20110308/1299594629
+# http://qiita.com/items/1f2c7793944b1f6cc346
+show_buffer_stack() {
+  POSTDISPLAY="
+stack: $LBUFFER"
+  zle push-line-or-edit
+}
+zle -N show_buffer_stack
+setopt noflowcontrol
+bindkey '^Q' show_buffer_stack
+
+# #
+# function cdup() {
+#   echo
+#   cd ..
+#   zle reset-prompt
+# }
+# zle -N cdup
+# bindkey '^X\^' cdup
 
 ## zaw-src-cdd
 # http://blog.kentarok.org/entry/2012/03/24/221522
@@ -265,21 +351,51 @@ function zaw-src-dirstack() {
     act_descriptions=("execute" "replace edit buffer" "append to edit buffer")
 }
 zaw-register-src -n dirstack zaw-src-dirstack
- 
+
 fi ## -f zaw.zsh
 
-####
-##function powerline_precmd() {
-##  export PS1="$(~/powerline-bash/powerline-bash.py $? --shell zsh)"
+## ssh
+function ssh-login(){
+  BUFFER=$(grep -v '^#' ~/ssh_hosts|peco|awk "{print \$3}")
+  #BUFFER=$(cat ~/ssh_hosts|peco|awk "{print \$3}")
+  if [ -z $BUFFER ]; then
+    zle reset-prompt
+  else
+    BUFFER='sudo ssh '$BUFFER $@
+    zle accept-line
+  fi
+}
+zle -N ssh-login
+bindkey '^Xs' ssh-login
+bindkey '^Xl' ssh-login
+
+##function ssh-uptime(){
+##  ssh-login
 ##}
-## 
-##function install_powerline_precmd() {
-##  for s in "${precmd_functions[@]}"; do
-##    if [ "$s" = "powerline_precmd" ]; then
-##      return
-##    fi
-##  done
-##  precmd_functions+=(powerline_precmd)
-##}
-## 
-##install_powerline_precmd
+##zle -N ssh-uptime
+
+# .zshrc
+function load-zshrc(){
+  BUFFER="source ~/.zshrc"
+  zle accept-line
+}
+zle -N load-zshrc
+bindkey '^Xz' load-zshrc
+
+##
+. ~/z.sh
+_Z_CMD=j
+export _Z_CMD
+#export _Z_DATA=${HOME}/gnw/masuda/.z
+
+type peco >/dev/null 2>&1 && ccd() {
+  local path=$(z -l | awk '{ print $2 }' | peco | head -n 1)
+    [ -n "$path" ] && cd "$path"
+}
+
+function bkup () {
+    cp $1{,.`date '+%Y%m%d.%H%M'`}
+}
+
+
+# EOF
