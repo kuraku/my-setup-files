@@ -4,32 +4,32 @@ set runtimepath^=~/vimfiles
 
 syntax on
 set background=dark
+hi Comment cterm=NONE 
 
-"é–‹ã„ã¦ã„ã‚‹ãƒãƒƒãƒ•ã‚¡ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ç§»å‹•
-"if v:version >= 700
+"³«¤¤¤Æ¤¤¤ë¥Ğ¥Ã¥Õ¥¡¤Î¥Ç¥£¥ì¥¯¥È¥ê¤Ë°ÜÆ°
+if v:version >= 700
 "    set autochdir
-"endif
+endif
+
+set t_Co=256
 
 set number
 set cursorline
 hi clear CursorLine
+"hi LineNr ctermfg=cyan cterm=NONE 
 
 "set encoding=utf-8
 "set fileencodings=utf-8,latin1
 set fileencodings=iso-2022-jp,utf-8,cp932,euc-jp,default,latin
-scriptencoding utf-8
 
-" ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å–ã‚‰ãªã„
+" ¥Ğ¥Ã¥¯¥¢¥Ã¥×¼è¤é¤Ê¤¤
 set nobackup
-" ä»–ã§æ›¸ãæ›ãˆã‚‰ã‚ŒãŸã‚‰è‡ªå‹•ã§èª­ã¿ç›´ã™
+" Â¾¤Ç½ñ¤­´¹¤¨¤é¤ì¤¿¤é¼«Æ°¤ÇÆÉ¤ßÄ¾¤¹
 "set autoread
-" ã‚¹ãƒ¯ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ä½œã‚‰ãªã„
+" ¥¹¥ï¥Ã¥×¥Õ¥¡¥¤¥ëºî¤é¤Ê¤¤
 set noswapfile
-" ä¿å­˜æ™‚ã«tabã‚’ã‚¹ãƒšãƒ¼ã‚¹ã«å¤‰æ›ã™ã‚‹
+" ÊİÂ¸»ş¤Ëtab¤ò¥¹¥Ú¡¼¥¹¤ËÊÑ´¹¤¹¤ë
 autocmd BufWritePre * :%s/\t/  /ge
-
-" .un~ ã‚’ä½œã‚‰ãªã„
-set noundofile
 
 " status line
 set laststatus=2
@@ -38,6 +38,7 @@ set statusline+=%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}
 set statusline+=%=%l/%L,%c%V%8P
 "highlight statusline   term=NONE cterm=NONE guifg=green ctermfg=black ctermbg=green
 "highlight StatusLine term=bold cterm=bold ctermfg=black ctermbg=white
+highlight statusLine guifg=blue guibg=yellow gui=none ctermfg=blue ctermbg=yellow cterm=none
 
 set tabstop=4
 set autoindent
@@ -48,80 +49,75 @@ set shiftwidth=4
 "nnoremap <silent>bn :bnext<CR>
 "nnoremap <silent>bb :b#<CR>
 
-" netrwã¯å¸¸ã«tree view
+" netrw¤Ï¾ï¤Ëtree view
 let g:netrw_liststyle = 3
-" CVSã¨.ã§å§‹ã¾ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã¯è¡¨ç¤ºã—ãªã„
+" CVS¤È.¤Ç»Ï¤Ş¤ë¥Õ¥¡¥¤¥ë¤ÏÉ½¼¨¤·¤Ê¤¤
 "let g:netrw_list_hide = 'CVS,\(^\|\s\s\)\zs\.\S\+'
-" 'v'ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã¨ãã¯å³å´ã«é–‹ãã€‚(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãŒå·¦å´ãªã®ã§å…¥ã‚Œæ›¿ãˆ)
+" 'v'¤Ç¥Õ¥¡¥¤¥ë¤ò³«¤¯¤È¤­¤Ï±¦Â¦¤Ë³«¤¯¡£(¥Ç¥Õ¥©¥ë¥È¤¬º¸Â¦¤Ê¤Î¤ÇÆş¤ìÂØ¤¨)
 let g:netrw_altv = 1
-" 'o'ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã¨ãã¯ä¸‹å´ã«é–‹ãã€‚(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãŒä¸Šå´ãªã®ã§å…¥ã‚Œæ›¿ãˆ)
+" 'o'¤Ç¥Õ¥¡¥¤¥ë¤ò³«¤¯¤È¤­¤Ï²¼Â¦¤Ë³«¤¯¡£(¥Ç¥Õ¥©¥ë¥È¤¬¾åÂ¦¤Ê¤Î¤ÇÆş¤ìÂØ¤¨)
 let g:netrw_alto = 1
 
 " SKK
-if filereadable(expand('~/vimfiles/plugin/skk.vim'))
-    let skk_jisyo = '~/.skk-jisyo'
-    if filereadable('~/.emacs.d/SKK-JISYO.L')
-        let skk_large_jisyo = '~/.emacs.d/SKK-JISYO.L'
-    elseif filereadable('~/SKK-JISYO.L')
-        let skk_large_jisyo = '~/SKK-JISYO.L'
-    endif
-    let skk_auto_save_jisyo = 1
-    let skk_keep_state =0
-    let skk_egg_like_newline = 1
-    let skk_show_annotation = 1
-    let skk_use_face = 1
-    
-    let &statusline .= '%{SkkGetModeStr()}'
+let skk_jisyo = '~/.skk-jisyo'
+if filereadable('~/.emacs.d/SKK-JISYO.L')
+    let skk_large_jisyo = expand('~/.emacs.d/SKK-JISYO.L')
+elseif filereadable('~/SKK-JISYO.L')
+    let skk_large_jisyo = expand('~/SKK-JISYO.L')
 endif
+let skk_auto_save_jisyo = 1
+let skk_keep_state =0
+let skk_egg_like_newline = 1
+let skk_show_annotation = 1
+let skk_use_face = 1
+
+let &statusline .= '%{SkkGetModeStr()}'
 
 " Neobundle
 if isdirectory(expand('~/vimfiles/bundle/'))
     set runtimepath+=~/vimfiles/bundle/neobundle.vim/
     " Required:
     call neobundle#begin(expand('~/vimfiles/bundle/'))
-    " neobundleè‡ªä½“ã‚’neobundleã§ç®¡ç†
+    " neobundle¼«ÂÎ¤òneobundle¤Ç´ÉÍı
     NeoBundleFetch 'Shougo/neobundle.vim'
     " Unite
     NeoBundle 'Shougo/unite.vim'
     NeoBundle 'Shougo/vimproc'
+    NeoBundle 'Shougo/vimfiler.vim'
     NeoBundle 'Shougo/neomru.vim'
     NeoBundle 'tacroe/unite-mark'
     
     NeoBundle 'itchyny/lightline.vim'
-    NeoBundle 'tpope/vim-fugitive'
-
     call neobundle#end()
 
-    NeoBundleCheck
+    "NeoBundleCheck
 
     " Required:
     filetype plugin indent on
 
-    " å…¥åŠ›ãƒ¢ãƒ¼ãƒ‰ã§é–‹å§‹ã™ã‚‹
-    let g:unite_enable_start_insert=1
-    " ãƒãƒƒãƒ•ã‚¡ä¸€è¦§
+    " ÆşÎÏ¥â¡¼¥É¤Ç³«»Ï¤¹¤ë
+    let g:unite_enable_start_insert = 0
+    " ¥Ğ¥Ã¥Õ¥¡°ìÍ÷
     noremap <silent> Ub :Unite buffer<CR>
-    " ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§
+    " ¥Õ¥¡¥¤¥ë°ìÍ÷
     "noremap <silent> Uf :Unite -buffer-name=file file<CR>
-    " æœ€è¿‘ä½¿ã£ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸€è¦§
+    " ºÇ¶á»È¤Ã¤¿¥Õ¥¡¥¤¥ë¤Î°ìÍ÷
     noremap <silent> Um :Unite file_mru<CR>
-    " ãƒ–ãƒƒã‚¯ãƒãƒ¼ã‚¯ä¸€è¦§
+    " ¥Ö¥Ã¥¯¥Ş¡¼¥¯°ìÍ÷
     noremap <silent> Uc :<C-u>Unite bookmark<CR>
-    "ãƒ–ãƒƒã‚¯ãƒãƒ¼ã‚¯ã«è¿½åŠ 
-    noremap <silent> Ua :<C-u>UnitebookmarkAdd<CR>
+    "¥Ö¥Ã¥¯¥Ş¡¼¥¯¤ËÄÉ²Ã
+    noremap <silent> Ua :<C-u>UniteBookmarkAdd<CR>
 endif
 
 " VimFiler
-let g:vimfiler_as_default_explorer=1
-"ã‚»ãƒ¼ãƒ•ãƒ¢ãƒ¼ãƒ‰ã‚’ç„¡åŠ¹ã«ã—ãŸçŠ¶æ…‹ã§èµ·å‹•ã™ã‚‹
+nnoremap <silent> Ud :VimFiler -auto-cd<CR>
+nnoremap <silent> Uf :cd %:h<CR>:VimFilerCurrentDir<CR>
+let g:vimfiler_as_default_explorer = 1
+"¥»¡¼¥Õ¥â¡¼¥É¤òÌµ¸ú¤Ë¤·¤¿¾õÂÖ¤Çµ¯Æ°¤¹¤ë
 let g:vimfiler_safe_mode_by_default = 0
 
-nnoremap <silent> Ud :VimFiler -auto-cd<CR>
-nnoremap <silent> Uf :cd %:p:h<CR>:VimFilerCurrentDir<CR>
-"nnoremap <silent> Uf :VimFilerCurrentDir<CR>
-"inoremap <C-f> <ESC>:VimFilerCurrentDir<CR>
-"
-"let g:vimfiler_enable_auto_cd = 1
+" Unite select
+hi PmenuSel ctermfg=Black ctermbg=yellow
 
 " encoding
 nmap <silent> eu :set fenc=utf-8<CR>
@@ -132,51 +128,33 @@ nmap <silent> eru :e ++enc=utf-8 %<CR>
 nmap <silent> ere :e ++enc=euc-jp %<CR>
 nmap <silent> ers :e ++enc=cp932 %<CR>
 
-"Makeã‚„grepã§cwindowã‚’è‡ªå‹•ã§ã²ã‚‰ãã‚ˆã†ã«ã™ã‚‹
-if v:version >= 700
-    autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
-    autocmd QuickfixCmdPost l* lopen
-    "M-gã§Grepã™ã‚‹
-    if has('unix')
-        nmap <Esc>g :vimgrep  %<LEFT><LEFT>
-        nmap <Esc>f :cn<CR>
-        nmap <Esc>b :cp<CR>
-    elseif has('win32')
-        nmap <M-g> :vimgrep  %<LEFT><LEFT>
-        "M-P,Nã§å€™è£œç§»å‹•
-        nmap <M-f> :cn<CR>
-        nmap <M-b> :cp<CR>
-    endif
-endif
+" status line
 
-" for svn.exe
-" let $PATH = "c:/cygwin64/bin/;" . $PATH
-" let $PATH = "c:/home/bin/svn-win32-1.7.13/bin;" . $PATH
-"
+"let g:lightline = {
+     "\ 'colorscheme': 'wombat',
+     "      \ 'component': {
+     "     "      \   'readonly': '%{&readonly?"?":""}',
+     "\ },
+     "     "      \ 'separator': { 'left': '?', 'right': '?' },
+     "     "      \ 'subseparator': { 'left': '?', 'right': '?' }
+     "     "      \ }
 
+"**
+     "\ 'colorscheme': '16color',
+     "\ 'colorscheme': 'solarized_dark',
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'component': {
-      \   'readonly': '%{&readonly?"\u2b64":""}',
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \ },
-      \ 'mode_map': {'c': 'NORMAL'},
-      \ 'active': {
-      \   'left': [ ['mode', 'paste'], ['fugitive', 'filename', 'cakephp', 'currenttag', 'anzu'] ]
-      \ },
-      \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-      \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
-      \ }
-
-function! MyFugitive()
-    try
-        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && strlen(fugitive#head())
-            return "\u2b60".fugitive#head()
-        endif
-    catch
-    endtry
-    return ''
-endfunction
+     \ 'colorscheme': 'wombat',
+     \ 'component': {
+     \   'readonly': '%{&readonly?"\u2b64":""}',
+     \ },
+     \ 'component_function': {
+     \   'fugitive': 'MyFugitive',
+     \ },
+     \ 'mode_map': {'c': 'NORMAL'},
+     \ 'active': {
+     \   'left': [ ['mode', 'paste'], ['fugitive', 'filename', 'cakephp', 'currenttag', 'anzu'] ]
+     \ },
+     \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+     \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
+     \ }
 
